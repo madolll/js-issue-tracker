@@ -61,7 +61,7 @@
 <!-- style="border: 2px solid grey; padding: 15px;" -->
           <div class="col-8">
             <ul id="responses" class="list-unstyled">
-              <li class="template hidden" style="margin-top: 30px; border: 2px solid grey; padding: 15px;">
+              <li class="template hidden" data-status="open" style="margin-top: 30px; border: 2px solid grey; padding: 15px;">
                 <p>
                   Issue:
                   <span data-id="id"></span>
@@ -87,8 +87,8 @@
 
                 <br>
                 <br>
-                <button type="button" class="btn btn-warning" data-id="closed">Close</button>
-                <button type="button" class="btn btn-danger" data-id="deleted">Delete</button>
+                <button type="button" class="btn btn-warning" data-id="close">Close</button>
+                <button type="button" class="btn btn-danger" data-id="delete">Delete</button>
               </li>
             </ul>
           </div>

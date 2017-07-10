@@ -15,18 +15,24 @@ $(document).ready(function() {
 
       $("#responses").append($template);
 
-      $("[data-id='closed']", $template).on("click", function(){
-        $("[data-id='status']", $template).text("closed").removeClass("btn-info").addClass("btn-success");
+      $("[data-id='close']", $template).on("click", function(){
+        var status = $template.attr("data-status");
+        if (status == "open") {
+          $("[data-id='status']", $template).text("closed").removeClass("btn-info").addClass("btn-success");
+          $(this).text("reopen").removeClass("btn-warning").addClass("btn-info");
+          $template.attr("data-status", "closed");
+        } else {
+          $("[data-id='status']", $template).text("open").removeClass("btn-success").addClass("btn-info");
+          $(this).text("close").removeClass("btn-info").addClass("btn-warning");
+          $template.attr("data-status", "open");
+        }
       });
 
-      $("[data-id='deleted']", $template).on("click", function(){
+      $("[data-id='delete']", $template).on("click", function(){
         $($template).remove();
       });
 
     });
-
-
-
 });
 
 
