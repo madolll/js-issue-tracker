@@ -2,4 +2,4 @@
 
 
 Deployment and local development
-# firebase serve
+$ firebase serve
