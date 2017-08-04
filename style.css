@@ -5,3 +5,8 @@ body {
 .hidden {
   display: none;
 }
+
+.list-bordered > li {
+	padding: 15px;
+	border: 1px solid #222;
+}
