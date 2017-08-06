@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to the issue-tracker</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<!-- Font-awesome CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
 		<!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
   <body>
-    <div class="container">
+		<div class="container">
       <div class="row">
         <div class="col-8">
-          <h1>JS Issue Tracker</h1>
+          <h1>JS Issue Tracker version:<span id="version"></span></h1>
 
           <br>
 
@@ -59,60 +60,71 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="container mt-4">
-        <div class=row>
-          <div class="col-8">
-            <ul id="responses" class="list-unstyled list-bordered">
-							<!-- START html is used by JS - DO NOT CHANGE -->
-							<!-- ======================================== -->
-              <li class="template hidden" data-status="open">
-                <p>
-                  Issue:
-                  <span data-id="id"></span>
-                </p>
+    <div class="container mt-4">
+      <div class=row>
+        <div class="col-8">
+          <ul id="responses" class="list-unstyled list-bordered">
+						<!-- START html is used by JS - DO NOT CHANGE -->
+						<!-- ======================================== -->
+            <li class="template hidden" data-status="open">
+              <p>
+                Issue:
+                <span data-id="id"></span>
+              </p>
 
-                <button type="button" data-id="status" class="btn btn-info btn-sm">Open</button>
+              <button type="button" data-id="status" class="btn btn-info btn-sm">Open</button>
 
-								<br>
-                <br>
+							<br>
+              <br>
 
-								<p>
-                  Description:
-                  <span data-id="description"></span>
-                </p>
+							<p>
+                Description:
+                <span data-id="description"></span>
+              </p>
 
-                <br>
+              <br>
 
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span data-id="severity"></span>
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <span data-id="severity"></span>
 
-                <br>
-                <br>
+              <br>
+              <br>
 
-                <i class="fa fa-github" aria-hidden="true"></i>
-                <span data-id="person"></span>
+              <i class="fa fa-github" aria-hidden="true"></i>
+              <span data-id="person"></span>
 
-                <br>
-                <br>
+              <br>
+              <br>
 
-                <button type="button" class="btn btn-warning" data-id="close">Close</button>
-                <button type="button" class="btn btn-danger" data-id="delete">Delete</button>
-              </li>
-							<!-- ======================================== -->
-							<!-- END html is used by JS - DO NOT CHANGE -->
-            </ul>
-          </div>
+              <button type="button" class="btn btn-warning" data-id="close">Close</button>
+              <button type="button" class="btn btn-danger" data-id="delete">Delete</button>
+            </li>
+						<!-- ======================================== -->
+						<!-- END html is used by JS - DO NOT CHANGE -->
+          </ul>
         </div>
       </div>
+		</div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
+    <script defer src="/__/firebase/4.2.0/firebase-app.js"></script>
+    <!-- <script defer src="/__/firebase/4.2.0/firebase-auth.js"></script> -->
+    <script defer src="/__/firebase/4.2.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
+
+		<!-- jQuery -->
+	  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
 		<!-- Tether -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
 		<!-- Bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
 		<!-- Custom app -->
-    <script type="text/javascript" src="app.js"></script>
+	  <script type="text/javascript" src="./app.js"></script>
   </body>
 </html>

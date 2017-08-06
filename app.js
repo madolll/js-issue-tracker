@@ -1,4 +1,19 @@
+// Wait for the document to be ready
 $(document).ready(function() {
+  try {
+    let app = firebase.app(); // Create Firebase app
+
+		// Listen to the value of description
+		firebase.database().ref('/description').on('value', snapshot => {
+
+			let description = snapshot.val(); // Store the response in a variable
+
+			$('#version').text(description.version); // Display the version in the page
+		});
+  } catch (e) {
+    console.error(e); // If there is an error log the error
+  }
+
 	// Custom form behavior
 	$("form[name='issue-tracker']").off("submit");
   $("form[name='issue-tracker']").on("submit", function(event) {
